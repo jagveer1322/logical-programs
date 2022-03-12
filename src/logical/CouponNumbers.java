@@ -1,16 +1,32 @@
 package logical;
-import java.util.Random;
-import java.util.Scanner;
-
+import java.util.*;
 public class CouponNumbers {
-    int[] couponArray;
-    int  pos = 0;
-    int randomCount = 0;
-    public static void main(String[] args){
-        CouponNumbers couponNumbers = new CouponNumbers();
-        couponNumbers.
-    }
 
-    
-    }
+	public static int generateNumber(int numberOfCoupons) {
+		return (int) Math.floor(Math.random() * numberOfCoupons) + 1;
+	}
+
+	public static void generateDistinctCoupons(int numberOfCoupons) {
+		HashSet<Integer> couponCodes = new HashSet<>();
+		 
+		int totalGenerations=0;
+
+		while (couponCodes.size() != numberOfCoupons) {
+			int randomNumber = generateNumber(numberOfCoupons);
+			totalGenerations++;
+			couponCodes.add(randomNumber);
+		}
+		
+		System.out.println("The total numbers generated are : " + totalGenerations);
+	}
+
+	public static void main(String[] args) {
+
+		Scanner scanner = new Scanner(System.in);
+		int numberOfCoupons;
+		System.out.println("Enter the number of coupons needed:");
+		numberOfCoupons = scanner.nextInt();
+		scanner.close();
+		generateDistinctCoupons(numberOfCoupons);
+	}
 }
